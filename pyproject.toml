@@ -1,7 +1,7 @@
 [project]
 name = "wheater-pipeline-lab"
 version = "0.1.0"
-description = "Add your description here"
+description = "Python Training Lab"
 readme = "README.md"
 requires-python = ">=3.14"
 dependencies = [
@@ -11,6 +11,12 @@ dependencies = [
     "pandas>=3.0.5",
     "pytest>=9.1.1",
     "pytest-asyncio>=1.4.0",
+    "pytest-mock>=3.15.1",
     "python-dotenv>=1.2.3",
+    "requests>=2.34.2",
     "ruff>=0.16.5",
+    "tenacity>=9.1.4",
 ]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]

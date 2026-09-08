@@ -1,9 +1,8 @@
 import logging
 import logging.handlers
-from pathlib import Path
-from dotenv import load_dotenv
 import os
 
+from dotenv import load_dotenv
 
 # Load environment variables from .env file
 load_dotenv()
@@ -47,7 +46,7 @@ def setup_logger(name: str) -> logging.Logger:
         file_handler.setLevel(LOG_LEVEL)
         file_handler.setFormatter(log_format)
         logger.addHandler(file_handler)
-    except Exception as e:
+    except OSError as e:
         print(f"Error setting up file handler: {e}")
 
     # Console handler - writes to stdout

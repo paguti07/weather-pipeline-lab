@@ -1,19 +1,15 @@
+import os
+
+import requests
+import urllib3
+from dotenv import load_dotenv
 from tenacity import (
-    RetryCallState,
-    before_sleep_log,
     retry,
     stop_after_attempt,
-    wait_exponential,
     wait_exponential_jitter,
 )
 
-from collections.abc import Generator
 from pipeline_logger import setup_logger
-import requests
-from dotenv import load_dotenv
-import os
-import urllib3
-
 
 logger = setup_logger(__name__)
 urllib3.disable_warnings(urllib3.exceptions.InsecureRequestWarning)
@@ -50,8 +46,8 @@ def fetch_meteo_api_forecast_data(latitude: float, longitude: float) -> dict:
         "latitude": latitude,
         "longitude": longitude,
         "temperature_unit": WEATHER_UNIT,
-	    "hourly": ["temperature_2m", "precipitation"],
-	    "timezone": "auto",
+        "hourly": ["temperature_2m", "precipitation"],
+        "timezone": "auto",
     }
     response = requests.get(url, params=params, verify=False)
     response.raise_for_status()

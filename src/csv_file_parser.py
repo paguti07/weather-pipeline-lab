@@ -1,9 +1,9 @@
-from pathlib import Path
-import logging
 import csv
-from collections.abc import Generator
-from pipeline_logger import setup_logger
 import re
+from collections.abc import Generator
+from pathlib import Path
+
+from pipeline_logger import setup_logger
 
 # Initialize logger
 logger = setup_logger(__name__)
@@ -35,7 +35,7 @@ def clean_coordinate(raw_coordinate: str) -> str:
     return coordinate_cleaned
 
 
-def parse_csv_file(file_path: str) -> Generator[dict, None, None]:
+def parse_csv_file(file_path: str) -> Generator[dict]:
     """
     Parse the csv files of global cities using regex
     and string manipulation.
